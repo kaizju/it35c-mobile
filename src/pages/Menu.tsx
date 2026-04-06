@@ -5,10 +5,10 @@ import { Redirect, Route } from "react-router";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 const Menu: React.FC = () => {
-const path =[
-{name:"Home",url:'app/home',icon:homeOutline}
+    const path = [
+        { name: "Home", url: '/app/home', icon: homeOutline }
 
-]
+    ]
     return (
 
         <IonPage>
@@ -22,28 +22,26 @@ const path =[
                         </IonToolbar>
                     </IonHeader>
                     <IonContent>
-                        {path.map((Item,index)=> (
+                        {path.map((Item, index) => (
                             <IonMenuToggle key={index}>
                                 <IonItem routerLink={Item.url} routerDirection="forward" >
-                                    <IonIcon icon={Item.icon} slot="start">
-                                  {Item.name}
-                                        
-                                    </IonIcon>
+                                    <IonIcon icon={Item.icon} slot="start"></IonIcon>
+                                        {Item.name}
                                 </IonItem>
                             </IonMenuToggle>
                         )
-                        
+
                         )}
                     </IonContent>
                 </IonMenu>
 
                 <IonRouterOutlet id="main">
-<Route exact path ="/app/home" component={Home} />
-<Route exact path ="/app">
-<Redirect to="/app/home" />
-</Route>
-<Route exact path ="/app/page1" component={Page1} />
-<Route exact path ="/app/page2" component={Page2} />
+                    <Route exact path="/app/home" component={Home} />
+                    <Route exact path="/app">
+                        <Redirect to="/app/home" />
+                    </Route>
+                    <Route exact path="/app/page1" component={Page1} />
+                    <Route exact path="/app/page2" component={Page2} />
                 </IonRouterOutlet>
             </IonSplitPane>
         </IonPage>
