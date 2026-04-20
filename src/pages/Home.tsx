@@ -10,9 +10,9 @@ import { Route, Redirect } from "react-router";
 
 const Home: React.FC = () => {
   const tabs = [
-    {name: 'feed', tab: 'feed', url:'/app/home/feed',icon:bookmarkOutline},
-    {name: 'search', tab: 'search', url:'/app/home/search',icon:search},
-    {name: 'favorites', tab: 'favorite', url:'/app/home/favorites',icon:star}
+    {name: 'feed', tab: 'Feed', url:'/app/home/feed',icon:bookmarkOutline},
+    {name: 'search', tab: 'Search', url:'/app/home/search',icon:search},
+    {name: 'favorites', tab: 'Favorite', url:'/app/home/favorites',icon:star}
   ]
   return (
    <IonReactRouter>
