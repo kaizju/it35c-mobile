@@ -1,16 +1,23 @@
-import { IonButton, IonContent, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPage, IonRoute, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonContent, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPage, IonRoute, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar, useIonRouter } from "@ionic/react";
 import { homeOutline, informationOutline, logOutOutline, settingsOutline } from "ionicons/icons";
 import Home from "./Home";
 import { Redirect, Route } from "react-router";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
+import { supabase } from "../lib/supabaseClient";
 const Menu: React.FC = () => {
+    const navigation = useIonRouter();
+    
     const path = [
         { name: "Home", url: '/app/home', icon: homeOutline },
         {name:'Page1', url:"/app/page1",icon:settingsOutline},
         {name:'Page2', url:"/app/page2",icon:informationOutline}
 
     ]
+    const handleLogOut = async () => {
+        await supabase.auth.signOut();
+        navigation.push('/','root','replace');
+    }
     return (
 
         <IonPage>
@@ -34,7 +41,7 @@ const Menu: React.FC = () => {
                         )
 
                         )}
-                            <IonButton routerLink="/" expand="full"> <IonIcon icon={logOutOutline} slot="start">
+                            <IonButton routerLink="/" expand="full" onClick={handleLogOut}> <IonIcon icon={logOutOutline} slot="start">
                             </IonIcon> Logout </IonButton>
                     </IonContent>
                 </IonMenu>
